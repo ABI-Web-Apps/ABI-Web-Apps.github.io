@@ -13,7 +13,7 @@ import { getCurrentInstance, onMounted, ref, Ref } from "vue";
 let showDescription: Ref<boolean> = ref(true);
 let refs = null;
 let appRenderer: Copper.copperRenderer;
-let oldScene = null;
+
 let showDiv: HTMLDivElement;
 
 onMounted(() => {
