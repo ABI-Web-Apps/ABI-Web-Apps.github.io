@@ -1,4 +1,7 @@
 <template>
+  <div id="title">
+    <span> Digital Twins</span>
+  </div>
   <div id="bg" ref="base_container"></div>
   <div v-if="showDescription" id="description" ref="description">
     <p>Click Heart, Lungs, and Stomach to see more information!!!</p>
@@ -75,8 +78,10 @@ function loadModel(url: string, name: string) {
         scene.pickModel(
           content,
           (mesh) => {
-            if (showDescription && scene.camera.position.x !== 39) {
-              changeStatus();
+            if (showDescription) {
+              if (scene.camera.position.x !== 39 || mesh) {
+                changeStatus();
+              }
             }
 
             if (mesh) {
@@ -106,6 +111,17 @@ function changeStatus() {
 </script>
 
 <style>
+#title {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #bg {
   width: 100vw;
   height: 100vh;
