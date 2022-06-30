@@ -59,7 +59,7 @@ function loadModel(url: string, name: string) {
             break;
           case "whole-heart":
             window.location.href =
-              "https://linkungao.github.io/heart-app-vue3.0/model-heart";
+              "https://uoa-heart-mechanics-research.github.io/medtech-heart";
             break;
           case "whole-stomach_1":
             window.location.href =
