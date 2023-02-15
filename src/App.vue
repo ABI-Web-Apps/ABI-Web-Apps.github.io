@@ -1,6 +1,6 @@
 <template>
   <div id="title">
-    <span> Digital Twins</span>
+    <span> My digital Twin</span>
   </div>
   <div id="bg" ref="base_container"></div>
   <div v-if="showDescription" id="description" ref="description">
@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import * as Copper from "gltfloader-plugin-test";
+import * as Copper from "copper3d_visualisation";
 
 import { getCurrentInstance, onMounted, ref, Ref } from "vue";
 
@@ -34,7 +34,7 @@ onMounted(() => {
 
   appRenderer = new Copper.copperRenderer(bg, { guiOpen: true });
 
-  loadModel("test.glb", "test");
+  loadModel("digital_twin.gltf", "test");
 
   appRenderer.animate();
 });
@@ -44,6 +44,10 @@ function loadModel(url: string, name: string) {
   if (scene1 == undefined) {
     const scene = appRenderer.createScene(name) as Copper.copperScene;
     if (scene) {
+      // const camera = appRenderer.gui?.addFolder("camera");
+      // camera?.add(scene.camera.position, "x").max(2000).min(-2000).step(1);
+      // camera?.add(scene.camera.position, "y").max(2000).min(-2000).step(1);
+      // camera?.add(scene.camera.position, "z").max(2000).min(-2000).step(1);
       appRenderer.setCurrentScene(scene);
       scene.controls.rotateSpeed = 2.5;
       scene.controls.noPan = true;
@@ -52,14 +56,16 @@ function loadModel(url: string, name: string) {
         //   "https://linkungao.github.io/medtech-heart-vue/model-heart"
         // );
         // console.log(meshName);
+        // console.log(scene);
+
         switch (meshName) {
           case "whole-lung":
             window.location.href =
               "http://sites.bioeng.auckland.ac.nz/medtech/lungs";
             break;
-          case "whole-heart":
+          case "heart":
             window.location.href =
-              "https://uoa-heart-mechanics-research.github.io/medtech-heart";
+              "https://linkungao.github.io/medtech-heart/model-heart";
             break;
           case "whole-stomach_1":
             window.location.href =
@@ -73,7 +79,7 @@ function loadModel(url: string, name: string) {
         document.removeEventListener("click", funa);
       };
 
-      const opt = ["whole-body", "whole-body_2", "whole-body_1"];
+      const opt = ["skin_epidermis", "skin_epidermis_1"];
       scene.loadGltf(url, (content) => {
         scene.pickModel(
           content,
