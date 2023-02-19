@@ -32,7 +32,7 @@ onMounted(() => {
     }, 3000);
   }
 
-  appRenderer = new Copper.copperRenderer(bg, { guiOpen: true });
+  appRenderer = new Copper.copperRenderer(bg, { guiOpen: false });
 
   loadModel("digital_latest.gltf", "test");
 
@@ -81,6 +81,7 @@ function loadModel(url: string, name: string) {
 
       const opt = ["skin_epidermis", "skin_epidermis_1"];
       scene.loadGltf(url, (content) => {
+        content.position.y = 250;
         scene.pickModel(
           content,
           (mesh) => {
@@ -92,6 +93,7 @@ function loadModel(url: string, name: string) {
 
             if (mesh) {
               meshName = mesh.name;
+
               document.addEventListener("click", funa);
             } else {
               document.removeEventListener("click", funa);
