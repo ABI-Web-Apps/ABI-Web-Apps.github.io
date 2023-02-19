@@ -32,7 +32,7 @@ onMounted(() => {
     }, 3000);
   }
 
-  appRenderer = new Copper.copperRenderer(bg, { guiOpen: true });
+  appRenderer = new Copper.copperRenderer(bg, { guiOpen: false });
 
   loadModel("digital_latest.gltf", "test");
 
