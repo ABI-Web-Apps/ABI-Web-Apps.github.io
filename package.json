@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "copper3d_visualisation": "^1.13.12",
+    "copper3d_visualisation": "^1.13.15",
     "dat.gui": "^0.7.9",
     "lil-gui": "^0.16.1",
     "vue": "^3.2.25"

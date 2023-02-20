@@ -1,6 +1,6 @@
 <template>
   <div id="title">
-    <span> My digital Twin</span>
+    <span> My Digital Twin</span>
   </div>
   <div id="bg" ref="base_container"></div>
   <div v-if="showDescription" id="description" ref="description">
@@ -32,9 +32,9 @@ onMounted(() => {
     }, 3000);
   }
 
-  appRenderer = new Copper.copperRenderer(bg, { guiOpen: false });
+  appRenderer = new Copper.copperRenderer(bg, { guiOpen: false, light: true });
 
-  loadModel("digital_v2.gltf", "test");
+  loadModel("digital_v2.gltf", "digital twin");
 
   appRenderer.animate();
 });
@@ -51,7 +51,7 @@ function loadModel(url: string, name: string) {
       appRenderer.setCurrentScene(scene);
       scene.controls.rotateSpeed = 2.5;
       scene.controls.noPan = true;
-      const funa = () => {
+      const afterPick = () => {
         // window.location.replace(
         //   "https://linkungao.github.io/medtech-heart-vue/model-heart"
         // );
@@ -76,12 +76,12 @@ function loadModel(url: string, name: string) {
         }
         // window.location.href =
         //   "https://linkungao.github.io/medtech-heart-vue/model-heart";
-        document.removeEventListener("click", funa);
+        document.removeEventListener("click", afterPick);
       };
 
-      const opt = ["skin_epidermis", "skin_epidermis_1"];
+      const opt = ["skin_epidermis", "skin_epidermis_1", "lung", "lung_1"];
       scene.loadGltf(url, (content) => {
-        content.position.y = 250;
+        // content.position.y = 250;
         scene.pickModel(
           content,
           (mesh) => {
@@ -94,9 +94,9 @@ function loadModel(url: string, name: string) {
             if (mesh) {
               meshName = mesh.name;
 
-              document.addEventListener("click", funa);
+              document.addEventListener("click", afterPick);
             } else {
-              document.removeEventListener("click", funa);
+              document.removeEventListener("click", afterPick);
             }
           },
           opt
