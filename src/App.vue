@@ -51,7 +51,7 @@ function loadModel(url: string, name: string) {
       appRenderer.setCurrentScene(scene);
       scene.controls.rotateSpeed = 2.5;
       scene.controls.noPan = true;
-      scene.addLights();
+      // scene.addLights();
       const afterPick = () => {
         // window.location.replace(
         //   "https://linkungao.github.io/medtech-heart-vue/model-heart"
@@ -83,6 +83,13 @@ function loadModel(url: string, name: string) {
       const opt = ["skin_epidermis", "skin_epidermis_1", "lung", "lung_1"];
       scene.loadGltf(url, (content) => {
         // content.position.y = 250;
+
+        const rotate = () => {
+          content.rotation.z -= 0.03;
+        };
+
+        scene.addPreRenderCallbackFunction(rotate);
+
         scene.pickModel(
           content,
           (mesh) => {
