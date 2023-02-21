@@ -51,6 +51,7 @@ function loadModel(url: string, name: string) {
       appRenderer.setCurrentScene(scene);
       scene.controls.rotateSpeed = 2.5;
       scene.controls.noPan = true;
+      scene.addLights();
       const afterPick = () => {
         // window.location.replace(
         //   "https://linkungao.github.io/medtech-heart-vue/model-heart"
