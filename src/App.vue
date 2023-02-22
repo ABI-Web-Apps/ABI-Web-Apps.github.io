@@ -84,11 +84,13 @@ function loadModel(url: string, name: string) {
       scene.loadGltf(url, (content) => {
         // content.position.y = 250;
 
-        const rotate = () => {
+        let rotate = function () {
           content.rotation.z -= 0.03;
         };
 
-        scene.addPreRenderCallbackFunction(rotate);
+        let id = scene.addPreRenderCallbackFunction(rotate);
+        let flag_remove = true;
+        let flag_add = true;
 
         scene.pickModel(
           content,
@@ -101,10 +103,34 @@ function loadModel(url: string, name: string) {
 
             if (mesh) {
               meshName = mesh.name;
+              if (flag_remove) {
+                scene.removePreRenderCallbackFunction(id);
+                id = scene.addPreRenderCallbackFunction(() => {
+                  content.rotation.z -= 0;
+                });
+                flag_remove = false;
+                flag_add = true;
+              }
 
               document.addEventListener("click", afterPick);
             } else {
               document.removeEventListener("click", afterPick);
+              // rotate = () => {
+              //   content.rotation.z -= 0.03;
+              // };
+
+              if (flag_add) {
+                if ((rotate as any).id) {
+                  (rotate as any).id = undefined;
+                }
+                scene.removePreRenderCallbackFunction(id);
+                id = scene.addPreRenderCallbackFunction(() => {
+                  content.rotation.z -= 0.03;
+                });
+
+                flag_add = false;
+                flag_remove = true;
+              }
             }
           },
           opt
