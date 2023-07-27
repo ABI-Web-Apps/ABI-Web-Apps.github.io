@@ -34,7 +34,7 @@ onMounted(() => {
 
   appRenderer = new Copper.copperRenderer(bg, { guiOpen: false, light: true });
 
-  loadModel("digital_v2.gltf", "digital twin");
+  loadModel("whole-body_latest_27_07_2023.gltf", "digital twin");
 
   appRenderer.animate();
 });
