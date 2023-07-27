@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import * as Copper from "copper3d_visualisation";
+import * as Copper from "copper3d";
 
 import { getCurrentInstance, onMounted, ref, Ref } from "vue";
 
@@ -32,7 +32,11 @@ onMounted(() => {
     }, 3000);
   }
 
-  appRenderer = new Copper.copperRenderer(bg, { guiOpen: false, light: true });
+  appRenderer = new Copper.copperRenderer(bg, {
+    guiOpen: false,
+    light: true,
+    logarithmicDepthBuffer: true,
+  });
 
   loadModel("whole-body_latest_27_07_2023.gltf", "digital twin");
 
@@ -50,7 +54,7 @@ function loadModel(url: string, name: string) {
       // camera?.add(scene.camera.position, "z").max(2000).min(-2000).step(1);
       appRenderer.setCurrentScene(scene);
       scene.controls.rotateSpeed = 2.5;
-      scene.controls.noPan = true;
+      (scene.controls as Copper.Copper3dTrackballControls).noPan = true;
       // scene.addLights();
       const afterPick = () => {
         // window.location.replace(
@@ -138,7 +142,8 @@ function loadModel(url: string, name: string) {
       });
       scene.loadViewUrl("human_view.json");
 
-      scene.updateBackground("#00467F", "#BA4482");
+      // scene.updateBackground("#00467F", "#BA4482");
+      scene.updateBackground("#2a7bbe", "#e358a1");
     }
     Copper.setHDRFilePath("venice_sunset_1k.hdr");
     appRenderer.updateEnvironment();
