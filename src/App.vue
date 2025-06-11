@@ -3,6 +3,9 @@
     <span> My Digital Twin</span>
   </div>
   <div id="bg" ref="base_container"></div>
+  <div class="btn-container">
+    <Buttons />
+  </div>
   <div v-if="showDescription" id="description" ref="description">
     <p>Click Heart, Lungs, and Stomach to see more information!!!</p>
   </div>
@@ -12,6 +15,7 @@
 import * as Copper from "copper3d";
 
 import { getCurrentInstance, onMounted, ref, Ref } from "vue";
+import Buttons from "./components/Buttons.vue";
 
 let showDescription: Ref<boolean> = ref(true);
 let refs = null;
@@ -188,6 +192,12 @@ function changeStatus() {
   border-radius: 10px;
   position: fixed;
   top: 300px;
+  left: 80px;
+}
+.btn-container {
+  z-index: 10px;
+  position: fixed;
+  top: 20px;
   left: 80px;
 }
 .btn {
