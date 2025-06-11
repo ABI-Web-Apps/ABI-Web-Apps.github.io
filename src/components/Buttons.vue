@@ -23,7 +23,7 @@
 const handleCardClick = (name: string) => {
   if (name == "heart") {
     window.open(
-      "https://linkungao.github.io/medtech-heart/model-heart",
+      "https://uoa-heart-mechanics-research.github.io/medtech-heart/model-heart/",
       "_blank"
     );
   } else if (name == "stomach") {

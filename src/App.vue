@@ -74,7 +74,7 @@ function loadModel(url: string, name: string) {
             break;
           case "heart":
             window.location.href =
-              "https://linkungao.github.io/medtech-heart/model-heart";
+              "https://uoa-heart-mechanics-research.github.io/medtech-heart/model-heart/";
             break;
           case "whole-stomach_1":
             window.location.href =
