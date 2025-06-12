@@ -73,8 +73,7 @@ function loadModel(url: string, name: string) {
               "http://sites.bioeng.auckland.ac.nz/medtech/lungs";
             break;
           case "heart":
-            window.location.href =
-              "https://uoa-heart-mechanics-research.github.io/medtech-heart/model-heart/";
+            window.location.href = "https://copper3d-brids.github.io/my_heart/";
             break;
           case "whole-stomach_1":
             window.location.href =

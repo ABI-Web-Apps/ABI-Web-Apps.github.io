@@ -22,12 +22,9 @@
 <script setup lang="ts">
 const handleCardClick = (name: string) => {
   if (name == "heart") {
-    window.open(
-      "https://uoa-heart-mechanics-research.github.io/medtech-heart/model-heart/",
-      "_blank"
-    );
+    window.open("https://copper3d-brids.github.io/my_heart/", "_blank");
   } else if (name == "stomach") {
-    window.open("https://sparc.science/datasets/136?type=dataset", "_blank");
+    // window.open("https://sparc.science/datasets/136?type=dataset", "_blank");
   } else if (name == "lungs") {
     window.open("http://sites.bioeng.auckland.ac.nz/medtech/lungs", "_blank");
   } else if (name == "breast") {
