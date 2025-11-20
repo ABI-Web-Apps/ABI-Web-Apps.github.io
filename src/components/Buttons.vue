@@ -29,7 +29,7 @@ const handleCardClick = (name: string) => {
     window.open("http://sites.bioeng.auckland.ac.nz/medtech/lungs", "_blank");
   } else if (name == "breast") {
     window.open(
-      "https://abi-ctt-group.github.io/breast-educational-resource/model-breast/",
+      "https://abi-breast-biomechanics-group.github.io/breast-educational-resource/model-breast",
       "_blank"
     );
   }
